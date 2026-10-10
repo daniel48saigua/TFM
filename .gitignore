@@ -1,0 +1,43 @@
+# --- Material de terceros (no se publica) ---
+EJEMPLOS/
+Plantilla_Memoria_TFM*.docx
+
+# --- Memoria: copias de seguridad, vistas previas y archivos temporales de Word ---
+*BACKUP*.docx
+*vista previa*.pdf
+~$*
+
+# --- Restos antiguos dentro del frontend ---
+Micronaut/tfm/frontend/TFM 2026*.docx
+Micronaut/tfm/frontend/edit_tfm.py
+Micronaut/tfm/frontend/clean_toc.py
+
+# --- Resultados en bruto de k6 (cientos de MB, se regeneran con npm run benchmark:*) ---
+Micronaut/tfm/frontend/benchmarks/*-results.json
+
+# --- Dependencias y entornos ---
+node_modules/
+.venv/
+__pycache__/
+
+# --- Compilación ---
+build/
+bin/
+out/
+dist/
+dist-ssr/
+target/
+.gradle/
+.micronaut/
+
+# --- IDE y sistema ---
+.idea/
+*.iml
+.vscode/
+.project
+.classpath
+.settings/
+.factorypath
+Thumbs.db
+.DS_Store
+*.log
