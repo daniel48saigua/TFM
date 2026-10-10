@@ -12,7 +12,7 @@ export const apiResources = [
   { key: 'teams', label: 'Equipos', path: '/api/teams' },
   { key: 'players', label: 'Jugadores', path: '/api/players' },
   { key: 'matches', label: 'Partidos', path: '/api/matches' },
-  { key: 'statistics', label: 'Estadisticas', path: '/api/statistics' },
+  { key: 'statistics', label: 'Estadísticas', path: '/api/statistics' },
 ]
 
 export async function fetchApiResource(resourcePath) {

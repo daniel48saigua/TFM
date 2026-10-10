@@ -33,8 +33,8 @@ function BenchmarkChart({ title, description, data, xKey = 'label', unit = '', d
             <Tooltip formatter={(value, name) => [format(value), name]} cursor={{ fill: 'rgba(17, 24, 39, .04)' }}
               contentStyle={{ borderRadius: 10, border: '1px solid #e5e7eb', fontSize: 13 }} />
             <Legend wrapperStyle={{ fontSize: 13 }} />
-            <Bar dataKey="micronaut" name="Micronaut" fill={COLORS.micronaut} radius={[4, 4, 0, 0]} maxBarSize={46} />
-            <Bar dataKey="spring" name="Spring Boot" fill={COLORS.spring} radius={[4, 4, 0, 0]} maxBarSize={46} />
+            <Bar dataKey="micronaut" name="Micronaut" fill={COLORS.micronaut} radius={[4, 4, 0, 0]} maxBarSize={46} isAnimationActive={false} />
+            <Bar dataKey="spring" name="Spring Boot" fill={COLORS.spring} radius={[4, 4, 0, 0]} maxBarSize={46} isAnimationActive={false} />
           </BarChart>
         </ResponsiveContainer>
       </div>

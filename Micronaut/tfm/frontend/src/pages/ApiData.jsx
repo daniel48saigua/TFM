@@ -23,7 +23,7 @@ function ApiData() {
       .catch(() => {
         if (!cancelled) {
           setData(null)
-          setError('No se pudo conectar con uno o ambos backends. Comprueba que Micronaut y Spring esten ejecutandose.')
+          setError('No se pudo conectar con uno o ambos backends. Comprueba que Micronaut y Spring estén ejecutándose.')
           setStatus('error')
         }
       })
