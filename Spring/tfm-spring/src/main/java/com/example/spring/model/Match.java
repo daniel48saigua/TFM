@@ -1,36 +1,18 @@
 package com.example.spring.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "matches")
+@Table("matches")
 public class Match {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "home_team_id")
     private Long homeTeamId;
-
-    @Column(name = "away_team_id")
     private Long awayTeamId;
-
-    @Column(nullable = false)
     private LocalDateTime date;
-
-    @Column(name = "home_score", nullable = false)
     private int homeScore;
-
-    @Column(name = "away_score", nullable = false)
     private int awayScore;
-
-    @Column(nullable = false, length = 30)
     private String status;
 
     public Match() {}

@@ -1,35 +1,17 @@
 package com.example.spring.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
-@Entity
-@Table(name = "player_statistics")
+@Table("player_statistics")
 public class PlayerStatistics {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "player_id", nullable = false)
     private Long playerId;
-
-    @Column(name = "matches_played", nullable = false)
     private int matchesPlayed;
-
-    @Column(nullable = false)
     private int goals;
-
-    @Column(nullable = false)
     private int assists;
-
-    @Column(name = "yellow_cards", nullable = false)
     private int yellowCards;
-
-    @Column(name = "red_cards", nullable = false)
     private int redCards;
 
     public PlayerStatistics() {}

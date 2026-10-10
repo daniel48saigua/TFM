@@ -22,8 +22,8 @@ dependencies {
     // REST API
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-    // JPA / Hibernate
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    // Spring Data JDBC (sin ORM, equivalente a Micronaut Data JDBC)
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 
     // PostgreSQL
     runtimeOnly 'org.postgresql:postgresql'
