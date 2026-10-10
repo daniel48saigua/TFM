@@ -25,6 +25,9 @@ function Navbar() {
           <NavLink className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} to="/api-data">
             API
           </NavLink>
+          <NavLink className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} to="/crud">
+            Gestión
+          </NavLink>
         </div>
       </div>
     </nav>

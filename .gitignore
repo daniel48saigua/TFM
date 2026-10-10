@@ -41,3 +41,6 @@ target/
 Thumbs.db
 .DS_Store
 *.log
+
+# --- Configuración local de herramientas ---
+.claude/
