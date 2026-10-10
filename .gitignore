@@ -44,3 +44,8 @@ Thumbs.db
 
 # --- Configuración local de herramientas ---
 .claude/
+
+# --- Resultados de mediciones: se versiona summary.json, no los datos en bruto ---
+benchmarks/results/*/raw/
+*.jfr
+benchmarks/results/*_quick/
