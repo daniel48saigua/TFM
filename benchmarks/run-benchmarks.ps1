@@ -306,4 +306,10 @@ $summary = [ordered]@{
 }
 $summaryPath = Join-Path $outDir 'summary.json'
 [IO.File]::WriteAllText($summaryPath, ($summary | ConvertTo-Json -Depth 8), (New-Object System.Text.UTF8Encoding $false))
+if (-not $Quick) {   # el frontend muestra siempre la última medición completa
+    $frontendData = Join-Path $root 'Micronaut\tfm\frontend\src\data\benchmark-summary.json'
+    New-Item -ItemType Directory -Force -Path (Split-Path $frontendData) | Out-Null
+    Copy-Item $summaryPath $frontendData -Force
+    Log "Copiado al frontend: $frontendData"
+}
 Log "Terminado. Resumen en $summaryPath"
