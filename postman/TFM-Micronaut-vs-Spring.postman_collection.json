@@ -1,0 +1,430 @@
+{
+  "info": {
+    "_postman_id": "30ec3d4f-c363-49fa-bfbb-1d59fcf440d5",
+    "name": "TFM - Micronaut vs Spring Boot",
+    "description": "Peticiones a la API REST de las dos implementaciones (Micronaut en el puerto 8080 y Spring Boot en el 8081). Ejecutar cada carpeta en orden: la petición 3 guarda el id del equipo creado, que usan la 4 y la 5.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Micronaut (8080)",
+      "item": [
+        {
+          "name": "1. Listar equipos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/api/teams",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "teams"
+              ]
+            }
+          }
+        },
+        {
+          "name": "2. Obtener el equipo 1",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/api/teams/1",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "teams",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "3. Crear un equipo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/api/teams",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "teams"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Equipo de prueba\",\n  \"city\": \"Alcalá de Henares\",\n  \"stadium\": \"Estadio de prueba\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const id = pm.response.json().id;",
+                  "pm.collectionVariables.set('idMicronaut', id);",
+                  "pm.test('Devuelve el equipo creado con su id', () => pm.expect(id).to.be.a('number'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "4. Modificar el equipo creado",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/api/teams/{{idMicronaut}}",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "teams",
+                "{{idMicronaut}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Equipo de prueba (modificado)\",\n  \"city\": \"Alcalá de Henares\",\n  \"stadium\": \"Estadio de prueba\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "5. Eliminar el equipo creado",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/api/teams/{{idMicronaut}}",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "teams",
+                "{{idMicronaut}}"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Devuelve 204 No Content', () => pm.response.to.have.status(204));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "6. Equipo inexistente (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/api/teams/999999",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "teams",
+                "999999"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Devuelve 404 Not Found', () => pm.response.to.have.status(404));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "7. Estadísticas del jugador 1",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/api/statistics/player/1",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "statistics",
+                "player",
+                "1"
+              ]
+            }
+          }
+        }
+      ],
+      "variable": [],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.variables.set('base', 'http://localhost:8080');"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Spring Boot (8081)",
+      "item": [
+        {
+          "name": "1. Listar equipos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/api/teams",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "teams"
+              ]
+            }
+          }
+        },
+        {
+          "name": "2. Obtener el equipo 1",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/api/teams/1",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "teams",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "3. Crear un equipo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/api/teams",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "teams"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Equipo de prueba\",\n  \"city\": \"Alcalá de Henares\",\n  \"stadium\": \"Estadio de prueba\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const id = pm.response.json().id;",
+                  "pm.collectionVariables.set('idSpring', id);",
+                  "pm.test('Devuelve el equipo creado con su id', () => pm.expect(id).to.be.a('number'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "4. Modificar el equipo creado",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/api/teams/{{idSpring}}",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "teams",
+                "{{idSpring}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Equipo de prueba (modificado)\",\n  \"city\": \"Alcalá de Henares\",\n  \"stadium\": \"Estadio de prueba\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "5. Eliminar el equipo creado",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/api/teams/{{idSpring}}",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "teams",
+                "{{idSpring}}"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Devuelve 204 No Content', () => pm.response.to.have.status(204));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "6. Equipo inexistente (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/api/teams/999999",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "teams",
+                "999999"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Devuelve 404 Not Found', () => pm.response.to.have.status(404));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "7. Estadísticas del jugador 1",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/api/statistics/player/1",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "statistics",
+                "player",
+                "1"
+              ]
+            }
+          }
+        }
+      ],
+      "variable": [],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.variables.set('base', 'http://localhost:8081');"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "idMicronaut",
+      "value": ""
+    },
+    {
+      "key": "idSpring",
+      "value": ""
+    }
+  ]
+}
