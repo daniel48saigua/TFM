@@ -49,3 +49,10 @@ Thumbs.db
 benchmarks/results/*/raw/
 *.jfr
 benchmarks/results/*_quick/
+
+# --- Memoria y documentos del TFM (no se publican: solo el código) ---
+*.docx
+*.pdf
+*.pptx
+memoria/
+GUIA - reescribir con mis palabras.md

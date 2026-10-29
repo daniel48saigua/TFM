@@ -14,7 +14,5 @@ Autor: Daniel Fernando Saigua Labre · Director: Sergio de la Mata Moratilla
 | `database` | Scripts SQL para recrear la base de datos con los datos de las pruebas |
 | `benchmarks` | Script de medición (arranque, memoria, k6 y JFR) y resultados |
 | `postman` | Colección de Postman con las peticiones de prueba a ambas APIs |
-| `memoria` | Scripts que generan las figuras de la memoria |
-| `TFM 2026 v4.docx` | Memoria del trabajo |
 
 Ambas APIs usan la misma base de datos PostgreSQL (`tfm_micronaut`).
